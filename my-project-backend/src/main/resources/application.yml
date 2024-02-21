@@ -1,0 +1,29 @@
+server:
+  port: 1145
+spring:
+  mail:
+    host: smtp.163.com
+    username: z2116344865@163.com
+    password: KEWEEADDHNDKUUPT
+  rabbitmq:
+    addresses: localhost
+    username: admin
+    password: admin
+    virtual-host: /
+  security:
+    jwt:
+      key: abcdefjhijk
+      expire: 7
+#    user:
+#      name: admin
+#      password: 123456
+  data:
+    redis:
+      host: 127.0.0.1
+      port: 6379
+      database: 0
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/project1-news
+    username: root
+    password: 114514
+    driver-class-name: com.mysql.cj.jdbc.Driver
