@@ -25,5 +25,6 @@ spring:
   datasource:
     url: jdbc:mysql://127.0.0.1:3306/project1-news
     username: root
-    password: 114514
+    password: 123456
     driver-class-name: com.mysql.cj.jdbc.Driver
+

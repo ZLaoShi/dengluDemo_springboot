@@ -10,6 +10,7 @@ import com.example.service.AccountService;
 import com.example.utils.Const;
 import com.example.utils.FlowUtils;
 import jakarta.annotation.Resource;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.core.AmqpAdmin;
 import org.springframework.amqp.core.AmqpTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
@@ -26,6 +27,7 @@ import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
 @Service
+@Slf4j
 public class AccountServiceImpl extends ServiceImpl<AccountMapper, Account> implements AccountService {
 
     @Resource
@@ -79,6 +81,7 @@ public class AccountServiceImpl extends ServiceImpl<AccountMapper, Account> impl
 
     @Override
     public String registerEmailAccount(EmailRegisterVO vo) { //注册逻辑
+        log.info("账户信息:[{}]", vo.toString());
         String email = vo.getEmail();
         String username = vo.getUsername();
         String code =  this.getEmailVerifyCode(email);
@@ -90,6 +93,7 @@ public class AccountServiceImpl extends ServiceImpl<AccountMapper, Account> impl
 
         String password = encoder.encode(vo.getPassword());
         Account account = new Account(null, username, password, email, "user", new Date());
+
         if(this.save(account)) {
             stringRedisTemplate.delete(key);
             return null;

@@ -34,7 +34,7 @@ public class AuthorizeController {
 
     @PostMapping("/register")
     public RestBean<Void> register(@RequestBody @Valid EmailRegisterVO vo) {
-        return this.messageHandle(vo, service::resetEmailAccountPassword);
+        return this.messageHandle(vo, service:: registerEmailAccount);
     }
 
     @PostMapping("/reset-confirm")
